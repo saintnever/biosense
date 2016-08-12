@@ -13,8 +13,8 @@ import plotly.tools as tls
 import plotly.graph_objs as go
 #auto determine the serial port
 #ports = list(serial.tools.list_ports.comports())
-port = '/dev/ttyUSB0'
-
+#port = '/dev/ttyUSB0'
+port = 'COM6'
 #set port parameters
 ser =serial. Serial(port,38400,timeout=1)
 
@@ -71,7 +71,8 @@ while True:
                print data_dict
                i=i+1
     if i>10:break
-    
+
+ser.close()
 if flag_save:
     with open(fname, 'wb') as csvfile:
         writer=csv.DictWriter(csvfile,fieldnames=['Ax','Ay','Az','Gx','Gy','Gz','Mx','My','Mz'])
